@@ -14,7 +14,9 @@ navigation
 
 pages
 	home page
+		user section
 		all posts by timestamp
+
 	results page
 		all posts by query and timestamp
 

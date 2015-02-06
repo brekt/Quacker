@@ -1,8 +1,14 @@
 extends layout
 
 block content
-	h1= title
-	form(action='/' method='post')
-		p Quack quack: 
-		input(name='quack' type='text')
-		button(type='submit' name='quackSubmit') submit
+	nav
+		span(id='title')=title 
+		ul
+			li sign in
+			li sign up
+			li sign out
+	div.quacks
+		form(action='/' method='post')
+			p Quack quack: 
+			input(name='quack' type='text' size='100')
+			button(type='submit' name='quackSubmit') submit
