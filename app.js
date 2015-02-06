@@ -12,15 +12,11 @@ var app = express();
 // knex => bookshelf  
 
 var env = process.env.NODE_ENV || 'development';
-var knexConfig = require('../knexfile.js')[env];
+var knexConfig = require('./knexfile.js')[env];
 var knex = require('knex')(knexConfig);
 var bookshelf = require('bookshelf')(knex);
 var bluebird = require('bluebird');
 
-app.post('/', function(req, res){
-    var quack = req.param('quack', null); // form input  
-    console.log(quack);
-});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
