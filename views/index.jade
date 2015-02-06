@@ -1,5 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	h1= title
+	form(action='/' method='post')
+		p Quack quack: 
+		input(name='quack' type='text')
+		button(type='submit' name='quackSubmit') submit
