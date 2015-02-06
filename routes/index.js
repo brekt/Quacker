@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var creds = require('./creds.js');
 
 // knex => bookshelf  
 
@@ -12,6 +13,7 @@ var knex = require('knex')(knexConfig);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Quacker' });
+//  res 
 });
 
 // router.post('/', function(req, res, next) {
@@ -30,7 +32,7 @@ router.post('/', function(req, res){
       .then(trx.rollback);
     }).then(function(resp){
       console.log('Transaction complete.');
-    })
+    });
     //.catch(function(err){
     //   console.log(err); 
      //});
