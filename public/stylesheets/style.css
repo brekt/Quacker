@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url("../images/ducks-background.jpg") no-repeat #fffafe;
 }
 
 a {
@@ -8,18 +9,50 @@ a {
 }
 
 nav {
+	float: left;
+	display: block;
+	width: 100%;
+	background-color: rgba(255, 0, 255, 0.9);
+	height: 50px;
+}
+
+
+
+.logo {
+	display: block;
+	float: left;
+	width: 25%;
+	padding-left: 20px;
+}
+
+.signinupout {
+	display: block;
+	float: right;
+	padding-right: 20px;
+	padding-top: 15px;
+}
+
+.inlineblock {
 	display: inline-block;
+	position: relative;
 }
 
-nav ul {
-	list-style-type: none;
+.inlineblock a {
+	padding: 10px;
 }
 
-nav ul li {
-	display: inline-block;
-	margin-left: 10px;
+.inlineblock form {
+	display: none;
+	float: left;
+	position: absolute;
+	top: 18px;
+	left: 9px;
 }
 
-#title {
-	font-size: 2em;
+.inlineblock form input {
+	display: block;
+}
+
+.title {
+	font-size: 36px;
 }
