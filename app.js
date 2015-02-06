@@ -9,18 +9,10 @@ var users = require('./routes/users');
 
 var app = express();
 
-// knex => bookshelf  
-
-var env = process.env.NODE_ENV || 'development';
-var knexConfig = require('./knexfile.js')[env];
-var knex = require('knex')(knexConfig);
-var bookshelf = require('bookshelf')(knex);
-var bluebird = require('bluebird');
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.set('bookshelf', bookshelf);
+//app.set('bookshelf', bookshelf);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
