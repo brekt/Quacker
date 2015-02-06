@@ -30,7 +30,7 @@ router.post('/', function(req, res){
       .then(trx.rollback);
     }).then(function(resp){
       console.log('Transaction complete.');
-    })
+    });
     //.catch(function(err){
     //   console.log(err); 
      //});
