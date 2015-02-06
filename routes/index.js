@@ -21,7 +21,7 @@ router.post('/', function(req, res){
     var quack = req.body.quack; // form input  
     console.log(quack);
     knex.transaction(function(trx){
-      knex('quacks').transacting(trx).insert({quack_user_id: 1, quack_content: quack})
+      knex('quacks').transacting(trx).insert({quack_user_id: 2, quack_content: quack})
       // .then(function(resp){
       //   var id = resp[0];
       // return console.log(resp);
