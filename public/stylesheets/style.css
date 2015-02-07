@@ -6,6 +6,7 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
 
 nav {
@@ -14,9 +15,8 @@ nav {
 	width: 100%;
 	background-color: rgba(255, 0, 255, 0.9);
 	height: 50px;
+	border-radius: 10px;
 }
-
-
 
 .logo {
 	display: block;
