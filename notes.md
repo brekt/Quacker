@@ -47,3 +47,7 @@ quacker database
 form submit a quack
 	routes js file using knex
 
+---  
+* mc added refactored page.js to accept two elements into function to work on forms.  in mattc branch.  
+* ?  
+
