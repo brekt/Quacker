@@ -50,3 +50,10 @@ quacker database
 form submit a quack
 	routes js file using knex
 
+
+---
+
+Hey Mike, I made some style changes on my branch and added in jQuery and the js for the dropdown signin form.  If you aren't digging the changes just leave them on my branch. If you like them you can add them to the master and keep working on it.
+I was hoping to get more of the functionality moving but I got distracted with the style.  Oh well.  Talk to you soon.
+~ MC
+
