@@ -2,15 +2,12 @@ forms
 
 	post form
 
-	signup form
-
-	sign in form
-
-
 navigation
 	sign in or sign up
+		if no cookie, sign-up or sign in
+		if cookie, sign out
 	search
-	home
+	home	
 
 pages
 	home page
