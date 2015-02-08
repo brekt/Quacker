@@ -85,24 +85,30 @@ input[type='text'],input[type='password'],input[type='email'] {
 
 }
 form#signinform {
-	display: none;
-	float: left;
+  display: none;
+  float: left;
   width: 175px;
   height: 70px;
   padding:10px 10px;
   border-radius: 10px;
   border: 1px solid #d9d9d9;
   background: #ff00ff;
-	position: absolute;
-	top: 40px;
-	right: 9px;
+  position: absolute;
+  top: 40px;
+  right: 9px;
 }
 form#signupform {
-	display: none;
-	float: left;
-	position: absolute;
-	top: 18px;
-	left: 9px;
+  display: none;
+  float: left;
+  width: 175px;
+  height: 70px;
+  padding:10px 10px;
+  border-radius: 10px;
+  border: 1px solid #d9d9d9;
+  background: #ff00ff;
+  position: absolute;
+  top: 40px;
+  right: 9px;
 }
 .inlineblock form input {
 	display: block;
