@@ -5,7 +5,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #000;
   text-decoration: none;
 }
 
@@ -16,6 +16,12 @@ nav {
 	background-color: rgba(255, 0, 255, 0.9);
 	height: 50px;
 	border-radius: 10px;
+}
+
+.quacks {
+	float: left;
+	display: block;
+	width: 100%;
 }
 
 .logo {
