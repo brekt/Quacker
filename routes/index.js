@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var creds = require('./creds.js');
+var creds = require('./../creds.js');
 
 // knex => bookshelf  
 

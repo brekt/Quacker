@@ -1,25 +1,144 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Londrina Solid", cursive;
+  background: url("../images/ducks-background.jpg") no-repeat #fffafe;
 }
 
 a {
-  color: #00B7FF;
+  color: black;
+  text-decoration: none;
 }
 
 nav {
+	float: left;
+	display: block;
+	width: 94%;
+	height: 128px;
+	border-radius: 10px;
+  padding: 0 3%;
+  position: relative;
+  border: 1px solid #d9d9d9;
+}
+nav::after {
+  content: "";
+  background: url(../images/pattern-9o75.png);
+  opacity: 0.9;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+	border-radius: 10px;
+}
+
+.logo {
+  padding-top: 21px;
+	display: block;
+	float: left;
+	width: 33.3%;
+}
+.logo a {
+  font-size: 70px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  font-family: 'Londrina Shadow', cursive;
+}
+.quacklogo {
+  display: block;
+  float: left;
+  width: 33.3%;
+}
+.quacklogo img {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.signinupout {
+	display: block;
+	float: right;
+  width: 33.3%;
+	padding-top: 50px;
+}
+
+.inlineblock {
+  float: right;
 	display: inline-block;
+	position: relative;
 }
 
-nav ul {
-	list-style-type: none;
+.inlineblock a {
+	padding: 10px;
+  font-size: 25px;
+}
+input[type='text'],input[type='password'],input[type='email'] {
+  display: block;
+  margin: 5px;
+  padding: 5px;
+  width: 80%;
+  font-size: 12px;
+  box-shadow: none;
+  border-radius: 5px;
+
+}
+form#signinform {
+	display: none;
+	float: left;
+  width: 175px;
+  height: 70px;
+  padding:10px 10px;
+  border-radius: 10px;
+  border: 1px solid #d9d9d9;
+  background: #ff00ff;
+	position: absolute;
+	top: 40px;
+	right: 9px;
+}
+form#signupform {
+	display: none;
+	float: left;
+	position: absolute;
+	top: 18px;
+	left: 9px;
+}
+.inlineblock form input {
+	display: block;
+}
+.quacks {
+  display: block;
+  float: left;
+  width: 75%;
+  height: 400px;
+  margin: 50px 0 0 0; 
+  border-radius: 10px;
+  position: relative;
+}
+.quacks::after {
+  content: "";
+  background: url(../images/pattern-9o75.png);
+  opacity: 0.5;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+	border-radius: 10px;
+}
+input.quackinput {
+  display: block;
+  margin: 5px;
+  padding: 5px;
+  width: 70%;
+  font-size: 12px;
+  box-shadow: none;
+  border-radius: 5px;
+}
+input.quackinput:focus {
+  height: 70px;
 }
 
-nav ul li {
-	display: inline-block;
-	margin-left: 10px;
-}
 
-#title {
-	font-size: 2em;
-}
