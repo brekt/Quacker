@@ -9,20 +9,30 @@ var knex = require('knex')(knexConfig);
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Quacker' });
+
+  // use knex to pull up newest quacks
+
+  knex.select('quack_content', 'quack_timestamp').from('quacks').then(function(data) {
+    console.log(data);
+    recentQuacks = data;
+  }); 
+
 });
+
+
 
 // insert quack into database
 
 router.post('/', function(req, res){
-    var quack = req.body.quack; // form input  
-    console.log(quack);
-    knex.transaction(function(trx){
-      knex('quacks').transacting(trx).insert({quack_user_id: 2, quack_content: quack})
-      .then(trx.commit)
-      .then(trx.rollback);
-    }).then(function(resp){
-      console.log('Transaction complete.');
-    })
+	var quack = req.body.quack; // form input  
+  knex.transaction(function(trx){
+    knex('quacks').transacting(trx).insert({quack_user_id: 2, quack_content: quack})
+    .then(trx.commit)
+    .then(trx.rollback);
+  }).then(function(resp){
+  })
 });
+
+
 
 module.exports = router;
