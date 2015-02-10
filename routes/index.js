@@ -11,13 +11,10 @@ router.get('/', function(req, res, next) {
 
   // use knex to pull up newest quacks
 
-  knex.select('quack_content', 'quack_timestamp').from('quacks').then(function(recentQuacks) {
+  knex.select('quack_content', 'quack_timestamp').from('quacks').orderBy('quack_timestamp', 'desc').limit(10).then(function(recentQuacks) {
       console.log(recentQuacks);
       res.render('index', { title: 'Quacker', recentQuacks: recentQuacks });
   });
-
-
-
 });
 
 
