@@ -63,7 +63,6 @@ nav {
 
 .postquack {
 	float: left;
-	display: block;
 	width: 100%;
 	padding-left: 25px;
 	padding-top: 25px;
@@ -73,8 +72,9 @@ nav {
 	border-radius: 10px;
 }
 
-/*.feed {
-	width: 75%
+.feed {
+	display: inline-block;
+	width: 75%;
+	height: 100%;
 	margin: auto;
 	border: 1px solid #000;
-}*/
