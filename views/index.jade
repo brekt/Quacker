@@ -22,5 +22,6 @@ block content
 			span Quack quack: 
 			input(name='quack' type='text' size='100')
 			button(type='submit' name='quackSubmit') submit
-	//- div.feed
-	//- 	span Feed goes here.
+	div.feed
+		each quack in recentQuacks
+			p=quack.quack_content

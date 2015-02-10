@@ -8,14 +8,15 @@ var knex = require('knex')(knexConfig);
 // render home page
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Quacker' });
 
   // use knex to pull up newest quacks
 
-  knex.select('quack_content', 'quack_timestamp').from('quacks').then(function(data) {
-    console.log(data);
-    recentQuacks = data;
-  }); 
+  knex.select('quack_content', 'quack_timestamp').from('quacks').then(function(recentQuacks) {
+      console.log(recentQuacks);
+      res.render('index', { title: 'Quacker', recentQuacks: recentQuacks });
+  });
+
+
 
 });
 
