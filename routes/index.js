@@ -27,8 +27,8 @@ router.post('/', function(req, res){
     knex('quacks').transacting(trx).insert({quack_user_id: 2, quack_content: quack})
     .then(trx.commit)
     .then(trx.rollback);
-  }).then(function(resp){
-  })
+  }).then(function(){
+  });
 });
 
 
