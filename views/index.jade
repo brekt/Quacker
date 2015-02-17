@@ -1,27 +1,28 @@
 extends layout
 
 block content
-	nav
-		div.logo
-			a.title(href='/')=title
-		div.signinupout 
-				div.inlineblock
-					a(href='#', id='signin') sign in
-					form(action='/' method='post' id='signinform')
-						input(name='username' type='text' size='20' placeholder='username')
-						input(name='password' type='password' size='20' placeholder='password')
-				div.inlineblock 
-					a(href='#', id='signup') sign up
-					form(action='/' method='post' id='signupform')
-						input(name='username' type='text' size='20' placeholder='username')
-						input(name='password' type='text' size='20' placeholder='password')
-				div.inlineblock 
-					a(href='#', id='signout') sign out 
-	div.postquack
-		form(action='/' method='post')
-			span Quack quack: 
-			input(name='quack' type='text' size='100')
-			button(type='submit' name='quackSubmit') submit
-	div.feed
-		each quack in recentQuacks
-			p=quack.quack_content
+	div.wrapper
+		nav
+			div.logo
+				a.title(href='/')=title
+			div.signinupout 
+					div.inlineblock
+						a(href='#', id='signin') sign in
+						form(action='/' method='post' id='signinform')
+							input(name='username' type='text' size='20' placeholder='username')
+							input(name='password' type='password' size='20' placeholder='password')
+					div.inlineblock 
+						a(href='#', id='signup') sign up
+						form(action='/' method='post' id='signupform')
+							input(name='username' type='text' size='20' placeholder='username')
+							input(name='password' type='text' size='20' placeholder='password')
+					div.inlineblock 
+						a(href='#', id='signout') sign out 
+		div.postquack
+			form(action='/' method='post')
+				span Quack quack: 
+				input(name='quack' type='text' size='100') 
+				input(type='submit' name='quackSubmit' value='submit' id='submitbutton') 
+		div.feed
+			each quack in recentQuacks
+				p=quack.quack_content

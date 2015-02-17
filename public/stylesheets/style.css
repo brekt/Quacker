@@ -70,11 +70,21 @@ nav {
 
 .postquack form input {
 	border-radius: 10px;
+	height: 20px;
+}
+
+#submitbutton {
+	background-color: rgb(255, 0, 255);
+	height: 25px;
 }
 
 .feed {
 	display: inline-block;
-	width: 75%;
+	width: 70%;
 	height: 100%;
-	margin: auto;
+	margin: 2% 20% 10% 2%;
 	border: 1px solid #000;
+	border-radius: 5px;
+	padding: 20px;
+	background-color: rgba(255, 255, 255, .9);
+
