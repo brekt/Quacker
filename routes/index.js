@@ -17,6 +17,10 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/signin', function(req, res, next) {
+  res.render('signin', { title: 'Quacker' });
+});
+
 // insert quack into database
 
 router.post('/', function(req, res, next){
