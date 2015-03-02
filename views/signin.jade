@@ -6,10 +6,11 @@ block content
 			div.logo
 				a.title(href='/')=title
 		div.signin 
-			form(id='signin' action='/')
+			form(id='signin' action='/signin' method='post')
 				legend(for='username') Choose a username:
 				input(id='username' name='username' type='text')
 				legend(for='email') Enter your email:
 				input(id='email' name='email' type='email')
 				legend(for='password') Choose a password:
 				input(id='password' name='password' type='password')
+				input(id='submit' type='submit')

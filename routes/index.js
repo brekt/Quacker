@@ -7,17 +7,25 @@ var knex = require('knex')(knexConfig);
 
 // render home page
 
+
+
 router.get('/', function(req, res, next) {
+
+  if (req.cookies.registered) {
 
   // use knex to pull up newest quacks
 
-  knex.select('quack_content', 'quack_timestamp').from('quacks').orderBy('quack_timestamp', 'desc').limit(10).then(function(recentQuacks) {
-      console.log(recentQuacks);
-      res.render('index', { title: 'Quacker', recentQuacks: recentQuacks });
-  });
+    knex.select('quack_content', 'quack_timestamp').from('quacks').orderBy('quack_timestamp', 'desc').limit(10).then(function(recentQuacks) {
+        console.log(recentQuacks);
+        res.render('index', { title: 'Quacker', recentQuacks: recentQuacks });
+    });
+  }
+  else {
+    res.render('signin', { title: 'Quacker'});
+  }
 });
 
-router.get('/signin', function(req, res, next) {
+router.get('signin', function(req, res, next) {
   res.render('signin', { title: 'Quacker' });
 });
 
@@ -33,6 +41,14 @@ router.post('/', function(req, res, next){
     res.redirect('/');
   });
 });
+
+router.post('/signin', function(req, res, next) {
+  res.cookie('registered', req.body.username);
+  res.redirect('/');
+  // knex.transaction(function(trx){
+  //   knex('users')
+  })
+})
 
 
 
