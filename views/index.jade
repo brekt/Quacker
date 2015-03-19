@@ -15,4 +15,7 @@ block content
 				input(type='submit' name='quackSubmit' value='submit' id='submitbutton') 
 		div.feed
 			each quack in recentQuacks
-				p=quack.quack_content
+				p
+					span.username=quack.user_name
+					span : 
+					span=quack.quack_content

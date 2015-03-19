@@ -100,3 +100,7 @@ nav {
 	background-color: rgba(255, 255, 255, .9);
 }
 
+.username {
+	font-weight: bold;
+}
+
