@@ -4,6 +4,7 @@ var router = express.Router();
 var env = process.env.NODE_ENV || 'development';
 var knexConfig = require('./../knexfile.js')[env];
 var knex = require('knex')(knexConfig);
+var globalUser = '';
 
 // render home page
 
@@ -31,13 +32,19 @@ router.get('/signin', function(req, res, next) {
 // insert quack into database
 
 router.post('/', function(req, res, next){
-	var quack = req.body.quack; // form input  
-  knex.transaction(function(trx){
-    knex('quacks').transacting(trx).insert({quack_user_id: 2, quack_content: quack})
-    .then(trx.commit)
-  }).then(function(){
-    res.redirect('/');
-  });
+	var quack = req.body.quack; // form input
+  var userId = knex.column('user_id')
+    .select().from('users')
+    .where({user_name: req.cookies.registered})
+    .then(function(data) {
+      userId = data[0].user_id;
+      knex.transaction(function(trx){
+        knex('quacks').transacting(trx).insert({quack_user_id: userId, quack_content: quack})
+        .then(trx.commit)
+      }).then(function(){
+          res.redirect('/');
+        });
+    })
 });
 
 router.post('/signin', function(req, res, next) {
