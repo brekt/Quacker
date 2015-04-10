@@ -32,7 +32,7 @@ router.get('/signin', function(req, res, next) {
 // insert quack into database
 
 router.post('/', function(req, res, next){
-	var quack = req.body.quack; // form input
+  var quack = req.body.quack; // form input
   var userId = knex.column('user_id')
     .select().from('users')
     .where({user_name: req.cookies.registered})
