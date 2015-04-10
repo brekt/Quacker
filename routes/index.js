@@ -4,11 +4,8 @@ var router = express.Router();
 var env = process.env.NODE_ENV || 'development';
 var knexConfig = require('./../knexfile.js')[env];
 var knex = require('knex')(knexConfig);
-var globalUser = '';
 
-// render home page
-
-
+// check for cookie, get quacks, or redirect to signin
 
 router.get('/', function(req, res, next) {
 
