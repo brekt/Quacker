@@ -4,6 +4,7 @@ var router = express.Router();
 var env = process.env.NODE_ENV || 'development';
 var knexConfig = require('./../knexfile.js')[env];
 var knex = require('knex')(knexConfig);
+var globalUser = '';
 
 // render home page
 
@@ -12,15 +13,11 @@ var knex = require('knex')(knexConfig);
 router.get('/', function(req, res, next) {
 
   if (req.cookies.registered) {
-
-  // use knex to pull up newest quacks
-
-    // knex.select('quack_content', 'quack_timestamp', 'quack_user_id').from('quacks').orderBy('quack_timestamp', 'desc').limit(10).then(function(recentQuacks) {
-      knex('users')
-        .join('quacks', 'users.user_id', 'quacks.quack_user_id')
-        .select('users.user_name', 'quacks.quack_timestamp', 'quacks.quack_content').orderBy('quacks.quack_timestamp', 'desc').limit(10).then(function(recentQuacks) {
-          console.log(recentQuacks);
-          res.render('index', { title: 'Quacker', recentQuacks: recentQuacks });
+    knex('users')
+      .join('quacks', 'users.user_id', 'quacks.quack_user_id')
+      .select('users.user_name', 'quacks.quack_timestamp', 'quacks.quack_content').orderBy('quacks.quack_timestamp', 'desc').limit(10).then(function(recentQuacks) {
+        console.log(recentQuacks);
+        res.render('index', { title: 'Quacker', recentQuacks: recentQuacks });
     });
   }
   else {
@@ -28,20 +25,26 @@ router.get('/', function(req, res, next) {
   }
 });
 
-router.get('signin', function(req, res, next) {
+router.get('/signin', function(req, res, next) {
   res.render('signin', { title: 'Quacker' });
 });
 
 // insert quack into database
 
 router.post('/', function(req, res, next){
-	var quack = req.body.quack; // form input  
-  knex.transaction(function(trx){
-    knex('quacks').transacting(trx).insert({quack_user_id: 2, quack_content: quack})
-    .then(trx.commit)
-  }).then(function(){
-    res.redirect('/');
-  });
+  var quack = req.body.quack; // form input
+  var userId = knex.column('user_id')
+    .select().from('users')
+    .where({user_name: req.cookies.registered})
+    .then(function(data) {
+      userId = data[0].user_id;
+      knex.transaction(function(trx){
+        knex('quacks').transacting(trx).insert({quack_user_id: userId, quack_content: quack})
+        .then(trx.commit)
+      }).then(function(){
+          res.redirect('/');
+        });
+    })
 });
 
 router.post('/signin', function(req, res, next) {
