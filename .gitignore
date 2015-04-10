@@ -2,4 +2,3 @@ node_modules
 creds.js
 .idea
 heroku_knexfile
-
