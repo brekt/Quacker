@@ -5,10 +5,11 @@ var env = process.env.NODE_ENV || 'development';
 var knexConfig = require('./../knexfile.js')[env];
 var knex = require('knex')(knexConfig);
 
-// check for cookie, get quacks, or redirect to signin
+var bcrypt = require('bcrypt');
+
+// render home page
 
 router.get('/', function(req, res, next) {
-
   if (req.cookies.registered) {
     knex('users')
       .join('quacks', 'users.user_id', 'quacks.quack_user_id')
@@ -37,26 +38,25 @@ router.post('/', function(req, res, next){
       userId = data[0].user_id;
       knex.transaction(function(trx){
         knex('quacks').transacting(trx).insert({quack_user_id: userId, quack_content: quack})
-        .then(trx.commit)
+        .then(trx.commit);
       }).then(function(){
           res.redirect('/');
         });
-    })
+    });
 });
 
 router.post('/signin', function(req, res, next) {
   res.cookie('registered', req.body.username);
   var username = req.body.username;
   var email = req.body.email;
-  var password = req.body.password;
-  knex.transaction(function(trx){
-    knex('users').transacting(trx).insert({user_name: username, user_email: email, user_password: password})
-    .then(trx.commit)
-  }).then(function(){
-    res.redirect('/');
+  bcrypt.hash(req.body.password, 10, function(err, hash) {
+    knex.transaction(function(trx){
+      knex('users').transacting(trx).insert({user_name: username, user_email: email, user_password: hash})
+      .then(trx.commit);
+    }).then(function(){
+      res.redirect('/');
+    });
   });
 });
-
-
 
 module.exports = router;
