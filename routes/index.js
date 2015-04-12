@@ -4,7 +4,6 @@ var router = express.Router();
 var env = process.env.NODE_ENV || 'development';
 var knexConfig = require('./../knexfile.js')[env];
 var knex = require('knex')(knexConfig);
-var globalUser = '';
 
 // render home page
 
@@ -51,15 +50,14 @@ router.post('/signin', function(req, res, next) {
   res.cookie('registered', req.body.username);
   var username = req.body.username;
   var email = req.body.email;
-  var password = req.body.password;
-  knex.transaction(function(trx){
-    knex('users').transacting(trx).insert({user_name: username, user_email: email, user_password: password})
-    .then(trx.commit)
-  }).then(function(){
-    res.redirect('/');
+  var password = bcrypt.hash(req.body.password, 10, function(err, hash) {
+    knex.transaction(function(trx){
+      knex('users').transacting(trx).insert({user_name: username, user_email: email, user_password: password})
+      .then(trx.commit)
+    }).then(function(){
+      res.redirect('/');
+    });
   });
 });
-
-
 
 module.exports = router;
