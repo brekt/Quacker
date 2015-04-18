@@ -1,5 +1,3 @@
-// comment
-
 module.exports = {
 	development: {
 		debug: true,
