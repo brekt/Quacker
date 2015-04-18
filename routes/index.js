@@ -7,6 +7,10 @@ var knex = require('knex')(knexConfig);
 
 var bcrypt = require('bcrypt');
 
+process.on('uncaughtException', function (err) {
+    console.log(err);
+});
+
 // render home page
 
 router.get('/', function(req, res, next) {
