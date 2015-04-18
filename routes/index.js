@@ -23,6 +23,11 @@ router.get('/', function(req, res, next) {
   }
 });
 
+router.get('/signout', function(req, res, next) {
+  res.clearCookie('registered');
+  res.redirect('/signin');
+});
+
 router.get('/signin', function(req, res, next) {
   res.render('signin', { title: 'Quacker' });
 });
